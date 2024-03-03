@@ -1,19 +1,33 @@
 package com.example.carbuilder
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Створення екземплярів Car без використання Builder
-        val car1 = Car("V8", 4, "Red", true, true, false)
-        val car2 = Car("V6", 4, "Blue", false)
-        val car3 = Car("V8", 4, "Black", true, false, true)
+        // Створення екземплярів Car з використанням Builder
+        val car1 = Car.Builder()
+            .engine("V8")
+            .color("Red")
+            .airbags(true)
+            .navigation(true)
+            .build()
+
+        val car2 = Car.Builder()
+            .engine("V6")
+            .color("Blue")
+            .build()
+
+        val car3 = Car.Builder()
+            .engine("V8")
+            .color("Black")
+            .airbags(true)
+            .sunroof(true)
+            .build()
 
         // Формування інформації для відображення
         val displayText = """
